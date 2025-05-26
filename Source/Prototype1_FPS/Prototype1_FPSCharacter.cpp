@@ -10,6 +10,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include "GameFramework/SpringArmComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -26,6 +27,11 @@ APrototype1_FPSCharacter::APrototype1_FPSCharacter()
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
 	FirstPersonCameraComponent->SetRelativeLocation(FVector(-10.f, 0.f, 60.f)); // Position the camera
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
+
+	FirstPersonCameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+	FirstPersonCameraBoom->SetupAttachment(RootComponent);
+	FirstPersonCameraBoom->TargetArmLength = 180.f; // follows character at this distance from behind 
+	FirstPersonCameraBoom->bUsePawnControlRotation = true; // rotate arm based on controller
 
 	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
 	Mesh1P = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh1P"));
