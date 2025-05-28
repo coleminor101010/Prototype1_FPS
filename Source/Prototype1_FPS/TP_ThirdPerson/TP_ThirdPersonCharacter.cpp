@@ -85,6 +85,9 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::Look);
+
+		//Player view
+		EnhancedInputComponent->BindAction(PlayerView, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::Look);
 	}
 	else
 	{
