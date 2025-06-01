@@ -27,11 +27,11 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 
-	// In your header file (e.g., BP_FPM16A1.h)
+	
 public:
 	// Variables to store input values
-	double Turn;
-	double LookUp;
+	float Turn;
+	float LookUp;
 
 	// Input functions
 	void TurnInput(float AxisValue);
